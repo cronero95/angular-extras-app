@@ -1,1 +1,4 @@
-<p>change-detection-page works!</p>
+<shared-title [title]="currentFramework()" />
+
+<pre>{{ frameworkAsSignal() | json }}</pre>
+<pre>{{ frameworkAsProperty | json }}</pre>
