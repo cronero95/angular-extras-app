@@ -1,14 +1,32 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { TitleComponent } from '@shared/title/title.component';
 
 @Component({
   selector: 'shared-heavy-loader-slow',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    TitleComponent,
+  ],
   template: `
-  <h1>Heavy loader slow works!!</h1>
+<section [ngClass]="['h-[600px] w-full', cssClass]">
+  <shared-title title="Heavy Loader Slow Works!!" />
+</section>
   `,
   styles: ``
 })
 export class HeavyLoaderSlowComponent {
+
+  @Input({required: true}) cssClass!: string;
+
+  constructor() {
+    const start = Date.now();
+
+    while (Date.now() - start < 3000) { };
+
+    console.log('Loaded');
+
+  }
 
 }

@@ -1,1 +1,25 @@
-<p>defer-views-page works!</p>
+<section class="grid grid-cols-1">
+  @defer (on viewport) {
+    <shared-heavy-loader-slow cssClass="bg-blue-500"/>
+  } @placeholder {
+    <shared-title
+      class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse"
+      title="Loading..."/>
+  }
+
+  @defer (on viewport) {
+    <shared-heavy-loader-slow cssClass="bg-green-500"/>
+  } @placeholder {
+    <shared-title
+      class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse"
+      title="Loading..."/>
+  }
+
+  @defer (on viewport) {
+    <shared-heavy-loader-slow cssClass="bg-pink-500"/>
+  } @placeholder {
+    <shared-title
+      class="h-[600px] w-full bg-gradient-to-r from-gray-200 to-gray-400 animate-pulse"
+      title="Loading..."/>
+  }
+</section>
