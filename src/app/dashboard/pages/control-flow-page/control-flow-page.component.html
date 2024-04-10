@@ -1,3 +1,5 @@
+<shared-title title="This is a required @Input"/>
+
 <section class="grid grid-cols-1 md:grid-cols-2 gap-3">
   <div class="bg-white rounded shadow p-10">
 
@@ -31,15 +33,41 @@
         <p>Over 80%</p>
       }
       @case ('C') {
-        <p>Below 70%</p>
+        <p>Over 70%</p>
       }
       @case ('D') {
-        <p>Below 60%</p>
+        <p>Over 60%</p>
       }
       @default {
         <p>Reproved</p>
       }
     }
+
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+
+    <h2 class="text-2xl font-bold mb-5">For: {{ frameworks() }}</h2>
+
+    <ul>
+      @for (framework of frameworks(); track framework; let i = $index) {
+        <li>{{ i+1 }} - {{ framework }}</li>
+      }
+    </ul>
+
+  </div>
+
+  <div class="bg-white rounded shadow p-10">
+
+    <h2 class="text-2xl font-bold mb-5">For: {{ frameworks2() }}</h2>
+
+    <ul>
+      @for (framework of frameworks2(); track $index) {
+        <li>{{ framework }}</li>
+      } @empty {
+        <p>The array is empty</p>
+      }
+    </ul>
 
   </div>
 
