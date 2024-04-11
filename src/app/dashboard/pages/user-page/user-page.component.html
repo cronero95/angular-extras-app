@@ -1,1 +1,20 @@
-<p>user-page works!</p>
+<shared-title title="User" />
+
+@if (user()) {
+
+  <section>
+    <img [srcset]="user()!.avatar" [alt]="user()!.first_name +' avatar'">
+  </section>
+
+  <div>
+    <h3>
+      {{ user()!.first_name }} {{ user()!.last_name }}
+    </h3>
+    <h3>
+      {{ user()!.email }}
+    </h3>
+  </div>
+
+} @else {
+  <h2>Loading user...</h2>
+}
