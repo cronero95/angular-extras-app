@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { toSignal } from "@angular/core/rxjs-interop";
 import { ActivatedRoute } from '@angular/router';
 import { TitleComponent } from '@shared/title/title.component';
@@ -18,13 +18,18 @@ export default class UserPageComponent {
   #activatedRoute = inject(ActivatedRoute);
   #usersService = inject(UsersService);
 
-  /* public user = signal<User | undefined>(undefined); */
   public user = toSignal(
     this.#activatedRoute.params
       .pipe(
         switchMap( ({id}) => this.#usersService.getUserById(id)),
       )
   );
+
+  public titleLabel = computed(() => {
+    if(!this.user()) return 'User information';
+
+    return `${this.user()!.first_name} ${this.user()!.last_name}`;
+  })
 
   constructor(){
     this.#activatedRoute.params
