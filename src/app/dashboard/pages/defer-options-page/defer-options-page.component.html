@@ -1,1 +1,84 @@
-<shared-title title="Defer Options"/>
+<shared-title title="Defer Triggers"/>
+
+<h2 class="text-xl">Interactions</h2>
+
+<hr class="my-2">
+<section>
+  @defer (on interaction) {
+    <shared-heavy-loader-fast cssClass="bg-blue-500 h-20">
+      <span>On interaction</span>
+    </shared-heavy-loader-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-400">
+      Click to load
+    </div>
+  }
+</section>
+
+<hr class="my-2">
+<section>
+  <button
+    #btnInteraction
+    class="p-2 bg-blue-500 hover:bg-blue-700 transition-all rounded text-white my-2"
+  >
+    Click to load
+  </button>
+
+  @defer (on interaction(btnInteraction)) {
+    <shared-heavy-loader-fast cssClass="bg-blue-500 h-20">
+      <span>On external interaction</span>
+    </shared-heavy-loader-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-400">
+      Click the button to load
+    </div>
+  }
+</section>
+
+<hr class="my-2">
+<section>
+  @defer (on hover) {
+    <shared-heavy-loader-fast cssClass="bg-blue-500 h-20">
+      <span>On hover</span>
+    </shared-heavy-loader-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-400">
+      Hover to load
+    </div>
+  }
+</section>
+
+<hr class="my-2">
+<section>
+  @defer (on immediate) {
+    <shared-heavy-loader-fast cssClass="bg-blue-500 h-20">
+      <span>On immediate</span>
+    </shared-heavy-loader-fast>
+  }
+</section>
+
+<hr class="my-2">
+<section>
+  @defer (on timer(2000)) {
+    <shared-heavy-loader-fast cssClass="bg-blue-500 h-20">
+      <span>On timer</span>
+    </shared-heavy-loader-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-400">
+      Wait 2 seconds to load
+    </div>
+  }
+</section>
+
+<hr class="my-2">
+<section>
+  @defer (on hover; on timer(5000)) {
+    <shared-heavy-loader-fast cssClass="bg-blue-500 h-20">
+      <span>On hover or On timer</span>
+    </shared-heavy-loader-fast>
+  } @placeholder {
+    <div class="w-full h-20 bg-purple-400">
+      Mouse over the element or  wait 5 seconds
+    </div>
+  }
+</section>
